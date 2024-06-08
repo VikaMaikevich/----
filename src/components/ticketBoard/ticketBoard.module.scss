@@ -1,0 +1,52 @@
+.tickets {
+  width: 502px;
+  display: grid;
+  grid-template-columns: 1fr;
+  @media (max-width: 754px) {
+    max-width: 502px;
+    margin: 0 auto;
+  }
+}
+.button {
+  padding: 15px 20px;
+  width: 502px;
+  border: none;
+  border-radius: 5px;
+  background-color: #2196f3;
+  color: #fff;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+.title {
+  margin: 0 0 0px 0;
+  padding: 15px 20px;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  color: black;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.loader {
+  margin: 0 0 0 0;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  color: black;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+}
