@@ -4,7 +4,7 @@ import sliceFilterReduser from './slices/sliceFilterReduser'
 import sliceButtonReduser from './slices/sliceButtonReduser'
 import sliceTicketsReduser from './slices/sliceTicketsReduser'
 
-const store = configureStore({
+const store = configureStore( {
   reducer: {
     filters: sliceFilterReduser,
     tabs: sliceButtonReduser,

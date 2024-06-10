@@ -3,7 +3,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import BarLoader from 'react-spinners/BarLoader'
 
 import TicketCard from '../ticketCard/ticketCard'
-import { fetchSearchId, fetchTickets, showMoreTickets} from '../../redux/slices/sliceTicketsReduser'
+import { showMoreTickets } from '../../redux/slices/sliceTicketsReduser'
+import { fetchSearchId, fetchTickets } from '../../redux/server/actions'
 
 import styles from './ticketBoard.module.scss'
 
@@ -80,33 +81,33 @@ function TicketBoard() {
   }
 
   return (
-      <ul className={styles.tickets}>
-        {!activeFilterCount ? (
-          <div className={styles.title}>Рейсов, подходящих под заданные фильтры, не найдено</div>
-        ) : null}
-        {isLoading ? (
-          <div className={styles.loader}>
-            <BarLoader color="#2196f3" width={500} height={10} speedMultiplier={0.3} />
-          </div>
-        ) : null}
-        {!errorMessage &&
-          sortTab(filteredArr)
-            .slice(0, visibleTickets)
-            .map((ticket, i) => (
-              <TicketCard
-                key={ticket.id || i}
-                ticket={ticket}
-                carrier={ticket.carrier}
-                segments={ticket.segments}
-                price={ticket.price}
-              />
-            ))}
-        {activeFilterCount > 0 && (
-          <button type='button'className={styles.button} onClick={handleShowMoreTickets}>
-            Показать еще 5 билетов!
-          </button>
-        )}
-      </ul>
+    <ul className={styles.tickets}>
+      {!activeFilterCount ? (
+        <div className={styles.title}>Рейсов, подходящих под заданные фильтры, не найдено</div>
+      ) : null}
+      {isLoading ? (
+        <div className={styles.loader}>
+          <BarLoader color="#2196f3" width={500} height={10} speedMultiplier={0.3} />
+        </div>
+      ) : null}
+      {!errorMessage &&
+        sortTab(filteredArr)
+          .slice(0, visibleTickets)
+          .map((ticket, i) => (
+            <TicketCard
+              key={ticket.id || i}
+              ticket={ticket}
+              carrier={ticket.carrier}
+              segments={ticket.segments}
+              price={ticket.price}
+            />
+          ))}
+      {activeFilterCount > 0 && (
+        <button type="button" className={styles.button} onClick={handleShowMoreTickets}>
+          Показать еще 5 билетов!
+        </button>
+      )}
+    </ul>
   )
 }
 

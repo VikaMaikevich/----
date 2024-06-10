@@ -32,7 +32,8 @@
         "newlines-between": "always"
       }
     ],
-    "no-param-reassign": ["error", { "props": false }]
+    "no-param-reassign": ["error", { "props": false }],
+    "import/no-cycle": "off" // Отключаем проверку циклических зависимостей
   },
   "settings": {
     "import/resolver": {

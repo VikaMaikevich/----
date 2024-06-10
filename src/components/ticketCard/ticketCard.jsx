@@ -43,7 +43,7 @@ function ticketCard({ ticket }) {
             {segments[0].origin} – {segments[0].destination}
           </div>
           <div className={styles.bot}>
-            {formatTimeDate(segments[0].date)} –{formatEndTime(segments[0].date, segments[0].duration)}
+            {formatTimeDate(segments[0].date)} – {formatEndTime(segments[0].date, segments[0].duration)}
           </div>
         </div>
         <div className={styles.data}>
@@ -52,7 +52,7 @@ function ticketCard({ ticket }) {
         </div>
         <div className={styles.data}>
           <div className={styles.top}>
-            {segments[0].stops.length ? `${segments[0].stops.length} пересадки` : `без пересадок`}{' '}
+            {segments[0].stops.length ? `${segments[0].stops.length} пересадки` : 'без пересадок'}
           </div>
           <div className={styles.bot}>{segments[0].stops.join(',')}</div>
         </div>
@@ -64,7 +64,7 @@ function ticketCard({ ticket }) {
             {segments[1].origin} – {segments[1].destination}
           </div>
           <div className={styles.bot}>
-            {formatTimeDate(segments[1].date)} –{formatEndTime(segments[1].date, segments[1].duration)}
+            {formatTimeDate(segments[1].date)} – {formatEndTime(segments[1].date, segments[1].duration)}
           </div>
         </div>
         <div className={styles.data}>
@@ -73,7 +73,7 @@ function ticketCard({ ticket }) {
         </div>
         <div className={styles.data}>
           <div className={styles.top}>
-          {segments[1].stops.length ? `${segments[1].stops.length} пересадки` : `без пересадок`}
+            {segments[1].stops.length ? `${segments[1].stops.length} пересадки` : 'без пересадок'}
           </div>
           <div className={styles.bot}>{segments[1].stops.join(',')}</div>
         </div>
@@ -83,16 +83,19 @@ function ticketCard({ ticket }) {
 }
 
 ticketCard.propTypes = {
-  segments: PropTypes.arrayOf(
-    PropTypes.shape({
-      date: PropTypes.string,
-      duration: PropTypes.number,
-      origin: PropTypes.string,
-      destination: PropTypes.string,
-    })
-  ),
-  carrier: PropTypes.string,
-  price: PropTypes.number,
+  ticket: PropTypes.shape({
+    price: PropTypes.number,
+    carrier: PropTypes.string,
+    segments: PropTypes.arrayOf(
+      PropTypes.shape({
+        date: PropTypes.string,
+        duration: PropTypes.number,
+        origin: PropTypes.string,
+        destination: PropTypes.string,
+        stops: PropTypes.arrayOf(PropTypes.string),
+      })
+    ),
+  }),
 }
 
 export default ticketCard
